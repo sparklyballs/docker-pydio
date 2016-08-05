@@ -47,6 +47,7 @@ RUN \
 	php5-zip \
 	php5-zlib \
 	rsync \
+	samba-client \
 	sqlite \
 	sqlite-dev \
 	ssmtp \
@@ -54,7 +55,11 @@ RUN \
 	tar \
 	unzip \
 	wget \
-	zip
+	zip && \
+
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/testing \
+	php5-ssh2
 
 # install pear packages
 RUN \
@@ -68,7 +73,8 @@ RUN \
  pear install \
 	'channel://pear.php.net/HTTP_OAuth-0.2.3' && \
  pear install \
-	'channel://pear.php.net/VersionControl_Git-0.4.4'
+	'channel://pear.php.net/VersionControl_Git-0.4.4' && \
+ pear clear-cache
 
 # configure sstmp and php
 RUN \
