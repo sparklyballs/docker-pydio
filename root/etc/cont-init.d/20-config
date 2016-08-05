@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+# create folders
+mkdir -p \
+	/config/{keys,log/nginx,log/pydio,nginx/site-confs,php,www} \
+	/run
+
+# copy config
+[[ ! -f /config/nginx/site-confs/default ]] && \
+	cp /defaults/default /config/nginx/site-confs/default
+[[ ! -e /config/nginx/nginx.conf ]] && \
+	cp /defaults/nginx.conf /config/nginx/nginx.conf
+[[ ! -e /config/php/www.conf ]] && \
+	cp /defaults/www.conf /config/php/www.conf
+
+# permissions
+chown -R abc:abc \
+	/config \
+	/run

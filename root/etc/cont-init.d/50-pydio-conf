@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# configure pydio
+sed -i \
+	-e 's#// define("AJXP_FORCE_LOGPATH", "/var/log/ajaxplorer/");#define("AJXP_FORCE_LOGPATH", "/config/log/pydio/");#g' \
+	-e 's#define("AJXP_DATA_PATH", AJXP_INSTALL_PATH."/data");#define("AJXP_DATA_PATH", "/data");#g' \
+		/config/www/pydio/conf/bootstrap_context.php
+
+
+# setting email config file.
+[[ ! -e /config/ssmtp.conf ]] && \
+cp /defaults/ssmtp.conf /config/ssmtp.conf
+
+cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf
+chown abc:abc /config/ssmtp.conf
