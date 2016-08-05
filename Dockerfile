@@ -63,9 +63,22 @@ RUN \
 
 # install pear packages
 RUN \
+ pear channel-discover \
+	guzzlephp.org/pear && \
+ pear channel-discover \
+	pear.amazonwebservices.com && \
+ pear channel-discover \
+	pear.symfony.com && \
+ pear channel-update \
+	guzzlephp.org/pear && \
+ pear channel-update \
+	pear.amazonwebservices.com && \
  pear channel-update \
 	pear.php.net && \
- pear upgrade PEAR && \
+ pear channel-update \
+	pear.symfony.com && \
+ pear upgrade \
+	PEAR && \
  pear install \
 	HTTP_WebDAV_Client && \
  pear install \
@@ -74,19 +87,10 @@ RUN \
 	'channel://pear.php.net/HTTP_OAuth-0.2.3' && \
  pear install \
 	'channel://pear.php.net/VersionControl_Git-0.4.4' && \
- pear channel-discover \
-	pear.symfony.com && \
- pear install \
-	channel://pear.symfony.com/EventDispatcher && \
- pear channel-discover \
-	guzzlephp.org/pear && \
- pear install \
-	channel://guzzlephp.org/pear/Guzzle && \
- pear channel-discover \
-	pear.amazonwebservices.com && \
  pear install \
 	--alldeps aws/sdk && \
- pear clear-cache
+ pear \
+	clear-cache
 
 # configure sstmp and php
 RUN \
