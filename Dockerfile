@@ -9,6 +9,7 @@ RUN \
 	curl \
 	git \
 	gzip \
+	imagemagick \
 	nano \
 	nginx \
 	openssl \
