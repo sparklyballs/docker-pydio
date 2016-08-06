@@ -104,7 +104,7 @@ sed -i \
 		-e "s@\output_buffering =.*@\output_buffering = \off@g" \
 		-e "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" \
 		-e "s/post_max_size =.*$/post_max_size = 1560M/" \
-		-e 's#;session.save_path = "/tmp"#session.save_path = "/tmp"#g' \
+		-e 's#;session.save_path = "/tmp"#session.save_path = "/config/tmp"#g' \
 	/etc/php5/php.ini
 
 # add local files

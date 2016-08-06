@@ -2,7 +2,7 @@
 
 # create folders
 mkdir -p \
-	/config/{keys,log/nginx,log/pydio,nginx/site-confs,php,www} \
+	/config/{keys,log/nginx,log/pydio,nginx/site-confs,php,tmp,www} \
 	/run
 
 # copy config
@@ -16,4 +16,5 @@ mkdir -p \
 # permissions
 chown -R abc:abc \
 	/config \
-	/run
+	/run \
+	/var/lib/nginx
